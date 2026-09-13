@@ -128,8 +128,8 @@ class ProjectModel {
     return total;
   }
 
-  String get formattedTotal =>
-      'Rs ${totalEstimatedCost.toStringAsFixed(0).replaceAllMapped(RegExp(r'(\d{1,3})(?=(\d{3})+(?!\d))'), (m) => '${m[1]},')}';
+  String formattedTotal(String currencySymbol) =>
+      '$currencySymbol ${totalEstimatedCost.toStringAsFixed(0).replaceAllMapped(RegExp(r'(\d{1,3})(?=(\d{3})+(?!\d))'), (m) => '${m[1]},')}';
 
   // ── SQLite serialization ─────────────────────────────────────────────────
 

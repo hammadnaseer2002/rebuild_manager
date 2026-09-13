@@ -1,6 +1,8 @@
 import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import '../../providers/rates_provider.dart';
+import 'package:provider/provider.dart';
 import '../../providers/project_provider.dart';
 import '../../utils/pdf_report_service.dart';
 import '../dashboard_screen.dart';
@@ -126,7 +128,8 @@ class _ProjectReportScreenState extends State<ProjectReportScreen> {
 
     setState(() => _generatingPdf = true);
     try {
-      final savePath = await PdfReportService.downloadPdf(project);
+      final currency = context.read<RatesProvider>().currencySymbol;
+      final savePath = await PdfReportService.downloadPdf(project, currency);
       if (context.mounted) {
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(
@@ -164,7 +167,8 @@ class _ProjectReportScreenState extends State<ProjectReportScreen> {
 
     setState(() => _sharingPdf = true);
     try {
-      await PdfReportService.sharePdf(project);
+      final currency = context.read<RatesProvider>().currencySymbol;
+      await PdfReportService.sharePdf(project, currency);
     } catch (e) {
       if (context.mounted) {
         ScaffoldMessenger.of(context).showSnackBar(
@@ -361,7 +365,7 @@ class _ProjectReportScreenState extends State<ProjectReportScreen> {
                                     ),
                                   ),
                                   Text(
-                                    'Rs ${_fmt(project.totalEstimatedCost)}',
+                                    '${Provider.of<RatesProvider>(context).currencySymbol} ${_fmt(project.totalEstimatedCost)}',
                                     style: const TextStyle(
                                       fontSize: 18,
                                       fontWeight: FontWeight.w700,

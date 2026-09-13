@@ -268,7 +268,7 @@ class _DoorsWindowsScreenState extends State<DoorsWindowsScreen> {
                           label: 'Main Door',
                           priceController: _mainDoorPriceCtrl,
                           qty: _mainDoors,
-                          total: 'Rs ${_formatCurrency(_mainDoorCost)}',
+                          total: '${Provider.of<RatesProvider>(context).currencySymbol} ${_formatCurrency(_mainDoorCost)}',
                           onChanged: (_) => setState(() {}),
                           onDecrement: () { if (_mainDoors > 0) setState(() => _mainDoors--); },
                           onIncrement: () => setState(() => _mainDoors++),
@@ -277,7 +277,7 @@ class _DoorsWindowsScreenState extends State<DoorsWindowsScreen> {
                           label: 'Room Doors',
                           priceController: _roomDoorPriceCtrl,
                           qty: _roomDoors,
-                          total: 'Rs ${_formatCurrency(_roomDoorCost)}',
+                          total: '${Provider.of<RatesProvider>(context).currencySymbol} ${_formatCurrency(_roomDoorCost)}',
                           onChanged: (_) => setState(() {}),
                           onDecrement: () { if (_roomDoors > 0) setState(() => _roomDoors--); },
                           onIncrement: () => setState(() => _roomDoors++),
@@ -286,7 +286,7 @@ class _DoorsWindowsScreenState extends State<DoorsWindowsScreen> {
                           label: 'Bathroom Doors',
                           priceController: _bathroomDoorPriceCtrl,
                           qty: _bathroomDoors,
-                          total: 'Rs ${_formatCurrency(_bathroomDoorCost)}',
+                          total: '${Provider.of<RatesProvider>(context).currencySymbol} ${_formatCurrency(_bathroomDoorCost)}',
                           onChanged: (_) => setState(() {}),
                           onDecrement: () { if (_bathroomDoors > 0) setState(() => _bathroomDoors--); },
                           onIncrement: () => setState(() => _bathroomDoors++),
@@ -304,7 +304,7 @@ class _DoorsWindowsScreenState extends State<DoorsWindowsScreen> {
                           label: 'Windows',
                           priceController: _windowPriceCtrl,
                           qty: _windows,
-                          total: 'Rs ${_formatCurrency(_windowCost)}',
+                          total: '${Provider.of<RatesProvider>(context).currencySymbol} ${_formatCurrency(_windowCost)}',
                           onChanged: (_) => setState(() {}),
                           onDecrement: () { if (_windows > 0) setState(() => _windows--); },
                           onIncrement: () => setState(() => _windows++),
@@ -313,7 +313,7 @@ class _DoorsWindowsScreenState extends State<DoorsWindowsScreen> {
                           label: 'Ventilators',
                           priceController: _ventilatorPriceCtrl,
                           qty: _ventilators,
-                          total: 'Rs ${_formatCurrency(_ventilatorCost)}',
+                          total: '${Provider.of<RatesProvider>(context).currencySymbol} ${_formatCurrency(_ventilatorCost)}',
                           onChanged: (_) => setState(() {}),
                           onDecrement: () { if (_ventilators > 0) setState(() => _ventilators--); },
                           onIncrement: () => setState(() => _ventilators++),
@@ -339,7 +339,7 @@ class _DoorsWindowsScreenState extends State<DoorsWindowsScreen> {
                               style: TextStyle(fontSize: 14, color: Colors.white70, fontWeight: FontWeight.w400),
                             ),
                             Text(
-                              'Rs ${_formatCurrency(_totalCost)}',
+                              '${Provider.of<RatesProvider>(context).currencySymbol} ${_formatCurrency(_totalCost)}',
                               style: const TextStyle(fontSize: 26, fontWeight: FontWeight.w600, color: Colors.white),
                             ),
                           ],
@@ -439,7 +439,7 @@ class _ItemRow extends StatelessWidget {
                       ),
                       child: Row(
                         children: [
-                          const Text('Rs ', style: TextStyle(fontSize: 14, color: Colors.white54)),
+                          Text('${Provider.of<RatesProvider>(context).currencySymbol} ', style: TextStyle(fontSize: 14, color: Colors.white54)),
                           SizedBox(
                             width: 55,
                             child: TextFormField(

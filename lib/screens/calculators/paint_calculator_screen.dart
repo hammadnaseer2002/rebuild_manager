@@ -448,7 +448,7 @@ class _PaintCalculatorScreenState extends State<PaintCalculatorScreen> {
                           label: 'Paint Rate',
                           controller: _rateController,
                           hint: '0',
-                          prefix: 'Rs ',
+                          prefix: '${Provider.of<RatesProvider>(context).currencySymbol} ',
                           suffix: '/ Liter',
                           isRequired: true,
                           onChanged: (v) => setState(() => _paintRatePerLiter = double.tryParse(v) ?? 0),
@@ -481,7 +481,7 @@ class _PaintCalculatorScreenState extends State<PaintCalculatorScreen> {
                               ),
                             ),
                             Text(
-                              'Rs ${_formatAmount(_estimatedCost)}',
+                              '${Provider.of<RatesProvider>(context).currencySymbol} ${_formatAmount(_estimatedCost)}',
                               style: const TextStyle(
                                 fontSize: 26,
                                 fontWeight: FontWeight.w600,

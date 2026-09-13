@@ -677,9 +677,9 @@ class _RateRow extends StatelessWidget {
               ),
               child: Row(
                 children: [
-                  const Text(
-                    'Rs ',
-                    style: TextStyle(color: Colors.white54, fontSize: 13),
+                  Text(
+                    '${Provider.of<RatesProvider>(context).currencySymbol} ',
+                    style: const TextStyle(color: Colors.white54, fontSize: 13),
                   ),
                   Expanded(
                     child: TextFormField(

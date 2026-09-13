@@ -355,7 +355,7 @@ class _CeilingCalculatorScreenState extends State<CeilingCalculatorScreen> {
                                     ),
                                   ),
                                   Text(
-                                    'Rs ${entry.value.toStringAsFixed(0)}/sq ft',
+                                    '${Provider.of<RatesProvider>(context).currencySymbol} ${entry.value.toStringAsFixed(0)}/sq ft',
                                     style: const TextStyle(
                                       fontSize: 13,
                                       color: Colors.white70,
@@ -372,7 +372,7 @@ class _CeilingCalculatorScreenState extends State<CeilingCalculatorScreen> {
                         _EditableRow(
                           label: 'Custom Rate (per sq ft)',
                           controller: _rateController,
-                          prefix: 'Rs ',
+                          prefix: '${Provider.of<RatesProvider>(context).currencySymbol} ',
                           onChanged: (v) => setState(() {
                             _ratePerSqFt = double.tryParse(v) ?? 0;
                             _ceilingType = ''; // Reset selection if manually typing
@@ -408,7 +408,7 @@ class _CeilingCalculatorScreenState extends State<CeilingCalculatorScreen> {
                               ),
                             ),
                             Text(
-                              'Rs ${_estimatedCost.toStringAsFixed(0)}',
+                              '${Provider.of<RatesProvider>(context).currencySymbol} ${_estimatedCost.toStringAsFixed(0)}',
                               style: const TextStyle(
                                 fontSize: 28,
                                 fontWeight: FontWeight.w600,

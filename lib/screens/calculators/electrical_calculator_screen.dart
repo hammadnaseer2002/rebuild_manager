@@ -367,7 +367,7 @@ class _ElectricalCalculatorScreenState
                               ),
                             ),
                             Text(
-                              'Rs ${_fmt(_total)}',
+                              '${Provider.of<RatesProvider>(context).currencySymbol} ${_fmt(_total)}',
                               style: const TextStyle(
                                 fontSize: 26,
                                 fontWeight: FontWeight.w600,
@@ -570,7 +570,7 @@ class _ItemRow extends StatelessWidget {
                       ),
                       child: Row(
                         children: [
-                          const Text('Rs ', style: TextStyle(fontSize: 14, color: Colors.white54)),
+                          Text('${Provider.of<RatesProvider>(context).currencySymbol} ', style: TextStyle(fontSize: 14, color: Colors.white54)),
                           SizedBox(
                             width: 55,
                             child: TextFormField(
@@ -604,7 +604,7 @@ class _ItemRow extends StatelessWidget {
 
                 // Total for this item
                 Text(
-                  'Rs ${_fmt(total)}',
+                  '${Provider.of<RatesProvider>(context).currencySymbol} ${_fmt(total)}',
                   style: const TextStyle(
                     fontSize: 16,
                     fontWeight: FontWeight.w600,

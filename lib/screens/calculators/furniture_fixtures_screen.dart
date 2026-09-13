@@ -310,7 +310,7 @@ class _FurnitureFixturesScreenState extends State<FurnitureFixturesScreen> {
                                     ],
                                   ),
                                   Text(
-                                    'Rs ${_formatCurrency(itemTotal)}',
+                                    '${Provider.of<RatesProvider>(context).currencySymbol} ${_formatCurrency(itemTotal)}',
                                     style: const TextStyle(
                                       fontSize: 16,
                                       fontWeight: FontWeight.w600,
@@ -342,7 +342,7 @@ class _FurnitureFixturesScreenState extends State<FurnitureFixturesScreen> {
                                         ),
                                         child: Row(
                                           children: [
-                                            const Text('Rs ', style: TextStyle(fontSize: 14, color: Colors.white54)),
+                                            Text('${Provider.of<RatesProvider>(context).currencySymbol} ', style: TextStyle(fontSize: 14, color: Colors.white54)),
                                             SizedBox(
                                               width: 55,
                                               child: TextFormField(
@@ -449,7 +449,7 @@ class _FurnitureFixturesScreenState extends State<FurnitureFixturesScreen> {
                               ),
                             ),
                             Text(
-                              'Rs ${_formatCurrency(_totalCost)}',
+                              '${Provider.of<RatesProvider>(context).currencySymbol} ${_formatCurrency(_totalCost)}',
                               style: const TextStyle(
                                 fontSize: 26,
                                 fontWeight: FontWeight.w600,

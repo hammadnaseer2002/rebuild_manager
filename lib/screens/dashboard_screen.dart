@@ -17,6 +17,7 @@ import 'calculators/electrical_calculator_screen.dart';
 import 'calculators/plumbing_calculator_screen.dart';
 import 'calculators/furniture_fixtures_screen.dart';
 import 'rates/rates_tab.dart';
+import '../providers/rates_provider.dart';
 
 // --- Pure Glassmorphism Helper Widgets ---
 
@@ -390,12 +391,14 @@ class _DashboardTab extends StatelessWidget {
                 ),
               ),
               const SizedBox(height: 8),
-              Text(
-                'Rs ${_formatAmount(provider.totalEstimatedCost)}',
-                style: const TextStyle(
-                  fontSize: 32,
-                  fontWeight: FontWeight.w400,
-                  color: Colors.white,
+              Consumer<RatesProvider>(
+                builder: (context, ratesProvider, _) => Text(
+                  '${ratesProvider.currencySymbol} ${_formatAmount(provider.totalEstimatedCost)}',
+                  style: const TextStyle(
+                    fontSize: 32,
+                    fontWeight: FontWeight.w400,
+                    color: Colors.white,
+                  ),
                 ),
               ),
             ],
@@ -664,12 +667,14 @@ class _ProjectListItem extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(
-                  'Rs ${project.totalEstimatedCost.toStringAsFixed(0)}',
-                  style: const TextStyle(
-                    fontSize: 14,
-                    color: Colors.white70,
-                    fontWeight: FontWeight.w400,
+                Consumer<RatesProvider>(
+                  builder: (context, ratesProvider, _) => Text(
+                    '${ratesProvider.currencySymbol} ${project.totalEstimatedCost.toStringAsFixed(0)}',
+                    style: const TextStyle(
+                      fontSize: 14,
+                      color: Colors.white70,
+                      fontWeight: FontWeight.w400,
+                    ),
                   ),
                 ),
               ],

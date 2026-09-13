@@ -369,7 +369,7 @@ class _TilesCalculatorScreenState extends State<TilesCalculatorScreen> {
                           label: 'Tile Price',
                           controller: _tilePriceController,
                           hint: '0',
-                          prefix: 'Rs ',
+                          prefix: '${Provider.of<RatesProvider>(context).currencySymbol} ',
                           suffix: '/ sq ft',
                           isRequired: true,
                           onChanged: (v) => setState(() => _tilePrice = double.tryParse(v) ?? 0),
@@ -400,7 +400,7 @@ class _TilesCalculatorScreenState extends State<TilesCalculatorScreen> {
                               ),
                             ),
                             Text(
-                              'Rs ${_formatAmount(_estimatedCost)}',
+                              '${Provider.of<RatesProvider>(context).currencySymbol} ${_formatAmount(_estimatedCost)}',
                               style: const TextStyle(
                                 fontSize: 26,
                                 fontWeight: FontWeight.w600,

@@ -1,6 +1,8 @@
 import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import '../../providers/rates_provider.dart';
+import 'package:provider/provider.dart';
 import '../../providers/project_provider.dart';
 import '../../utils/app_constants.dart';
 import 'project_report_screen.dart';
@@ -223,7 +225,7 @@ class CompleteEstimateScreen extends StatelessWidget {
                                     ),
                                   ),
                                   Text(
-                                    'Rs ${_fmt(item['amount'] as double)}',
+                                    '${Provider.of<RatesProvider>(context).currencySymbol} ${_fmt(item['amount'] as double)}',
                                     style: const TextStyle(
                                       fontSize: 15,
                                       fontWeight: FontWeight.w600,
@@ -257,7 +259,7 @@ class CompleteEstimateScreen extends StatelessWidget {
                                   ),
                                 ),
                                 Text(
-                                  'Rs ${_fmt(total)}',
+                                  '${Provider.of<RatesProvider>(context).currencySymbol} ${_fmt(total)}',
                                   style: const TextStyle(
                                     fontSize: 26,
                                     fontWeight: FontWeight.w600,

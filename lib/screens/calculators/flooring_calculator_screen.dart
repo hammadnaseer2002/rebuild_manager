@@ -371,7 +371,7 @@ class _FlooringCalculatorScreenState extends State<FlooringCalculatorScreen> {
                                   ),
                                   const SizedBox(height: 4),
                                   Text(
-                                    'Rs ${entry.value.toStringAsFixed(0)} / sq ft',
+                                    '${Provider.of<RatesProvider>(context).currencySymbol} ${entry.value.toStringAsFixed(0)} / sq ft',
                                     style: const TextStyle(
                                       fontSize: 10,
                                       color: Colors.white70,
@@ -404,7 +404,7 @@ class _FlooringCalculatorScreenState extends State<FlooringCalculatorScreen> {
                           label: 'Material Rate',
                           controller: _rateController,
                           hint: '0',
-                          prefix: 'Rs ',
+                          prefix: '${Provider.of<RatesProvider>(context).currencySymbol} ',
                           suffix: '/ sq ft',
                           isRequired: true,
                           onChanged: (_) => setState(() {
@@ -437,7 +437,7 @@ class _FlooringCalculatorScreenState extends State<FlooringCalculatorScreen> {
                               ),
                             ),
                             Text(
-                              'Rs ${_formatAmount(_estimatedCost)}',
+                              '${Provider.of<RatesProvider>(context).currencySymbol} ${_formatAmount(_estimatedCost)}',
                               style: const TextStyle(
                                 fontSize: 26,
                                 fontWeight: FontWeight.w600,
