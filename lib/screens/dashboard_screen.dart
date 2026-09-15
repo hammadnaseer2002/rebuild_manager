@@ -1,5 +1,5 @@
+import 'dart:math';
 import 'dart:ui';
-
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -19,6 +19,9 @@ import 'calculators/furniture_fixtures_screen.dart';
 import 'rates/rates_tab.dart';
 import '../providers/rates_provider.dart';
 
+// --- Background Session Variable ---
+final int _sessionBackgroundIndex = Random().nextInt(7) + 1;
+
 // --- Pure Glassmorphism Helper Widgets ---
 
 /// Extremely blurred, highly translucent card mimicking the reference image
@@ -31,13 +34,7 @@ class _PureGlassCard extends StatelessWidget {
   final BorderRadius? borderRadius;
   final VoidCallback? onTap;
   final bool isHighlight;
-  // FIX: this card no longer blurs on its own by default. The dashboard's
-  // background is blurred ONCE, in a single fixed BackdropFilter behind
-  // everything (see DashboardScreen.build). Cards just sit on top of that
-  // already-blurred layer as plain translucent boxes — no live blur math
-  // per card, so there's nothing to flicker/disappear during scroll.
-  // Only the bottom nav (which floats over moving scroll content) needs
-  // its own live blur, so it passes useOwnBlur: true.
+
   final bool useOwnBlur;
 
   const _PureGlassCard({
@@ -117,7 +114,7 @@ class _ZenBackground extends StatelessWidget {
       child: Stack(
         fit: StackFit.expand,
         children: [
-          Image.asset('assets/images/b.jpg', fit: BoxFit.cover),
+          Image.asset('assets/images/b$_sessionBackgroundIndex.jpg', fit: BoxFit.cover),
           Container(
             decoration: BoxDecoration(
               gradient: LinearGradient(
